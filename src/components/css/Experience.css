@@ -1,0 +1,130 @@
+.experience-section {
+  position: relative;
+}
+
+.experience-list {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.experience-card {
+  position: relative;
+  padding: 2rem 2.25rem;
+  border: 1px solid var(--glass-border);
+  border-left: 3px solid var(--accent-primary);
+  border-radius: 16px;
+  background: var(--glass-bg);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(12px);
+  transition: var(--transition);
+}
+
+.experience-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-primary);
+  box-shadow: var(--shadow-lg);
+}
+
+.experience-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.experience-organization {
+  margin-bottom: 0.35rem;
+  color: var(--accent-primary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.experience-role {
+  font-size: 1.25rem;
+  line-height: 1.4;
+}
+
+.experience-type {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.experience-meta {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.2rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+.experience-meta time {
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.experience-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.experience-tech li {
+  padding: 0.2rem 0.65rem;
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  color: var(--accent-primary);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.experience-highlights {
+  display: grid;
+  gap: 0.65rem;
+  padding-top: 1rem;
+  color: var(--text-secondary);
+  list-style: none;
+}
+
+.experience-highlights li {
+  position: relative;
+  padding-left: 1.25rem;
+}
+
+.experience-highlights li::before {
+  position: absolute;
+  top: 0.65em;
+  left: 0;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  content: '';
+  box-shadow: 0 0 10px color-mix(in srgb, var(--accent-primary) 55%, transparent);
+}
+
+@media (max-width: 640px) {
+  .experience-card {
+    padding: 1.35rem 1.25rem;
+  }
+
+  .experience-card-header {
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .experience-meta {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
