@@ -5,9 +5,13 @@ import PhotoStack from '../../components/PhotoStack';
 
 const About = () => {
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   const readMoreRef = useRef(null);
   const closeRef = useRef(null);
   const dialogRef = useRef(null);
+  const expandRef = useRef(null);
+  const bodyRef = useRef(null);
+  const modalScrollRef = useRef(0);
 
   useEffect(() => {
     if (!isAboutModalOpen) return;
@@ -16,7 +20,6 @@ const About = () => {
     document.body.style.overflow = 'hidden';
     closeRef.current?.focus({ preventScroll: true });
     const handleKeyDown = (event) => {
-      if (event.key === 'Escape') setIsAboutModalOpen(false);
       if (event.key !== 'Tab') return;
       const controls = dialogRef.current?.querySelectorAll('button:not([disabled]), a[href], input, textarea, [tabindex="0"]');
       if (!controls?.length) return;
@@ -38,7 +41,31 @@ const About = () => {
     };
   }, [isAboutModalOpen]);
 
-  const toggleAboutModal = () => setIsAboutModalOpen(!isAboutModalOpen);
+  const toggleAboutModal = () => {
+    setIsExpanded(false);
+    setIsAboutModalOpen((open) => !open);
+  };
+
+  const expandView = () => {
+    modalScrollRef.current = bodyRef.current?.scrollTop ?? 0;
+    setIsExpanded(true);
+    closeRef.current?.focus({ preventScroll: true });
+    requestAnimationFrame(() => {
+      if (bodyRef.current) bodyRef.current.scrollTop = 0;
+    });
+  };
+
+  const closeCurrentView = () => {
+    if (isExpanded) {
+      setIsExpanded(false);
+      requestAnimationFrame(() => {
+        if (bodyRef.current) bodyRef.current.scrollTop = modalScrollRef.current;
+        expandRef.current?.focus({ preventScroll: true });
+      });
+    } else {
+      setIsAboutModalOpen(false);
+    }
+  };
 
   const handleBackdropClick = (e) => {
     if (e.target.classList.contains('about-modal-overlay')) {
@@ -75,15 +102,36 @@ const About = () => {
 
       {/* Detailed About Modal */}
       {isAboutModalOpen && (
-        <div className="about-modal-overlay" onClick={handleBackdropClick}>
-          <div ref={dialogRef} className="about-modal-content reveal-modal" role="dialog" aria-modal="true" aria-labelledby="about-modal-title">
+        <div className={`about-modal-overlay${isExpanded ? ' about-modal-overlay-expanded' : ''}`} onClick={handleBackdropClick}>
+          <div
+            ref={dialogRef}
+            className={`about-modal-content reveal-modal${isExpanded ? ' about-modal-expanded' : ''}`}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="about-modal-title"
+            onKeyDown={(event) => {
+              if (event.key === 'Escape') {
+                event.preventDefault();
+                event.stopPropagation();
+                closeCurrentView();
+              }
+            }}
+          >
             <div className="about-modal-header">
               <h2 id="about-modal-title">Who <span>Am I?</span></h2>
-              <button ref={closeRef} className="about-modal-close" onClick={toggleAboutModal} aria-label="Close modal">
-                &times;
-              </button>
+              <div className="about-modal-actions">
+                {!isExpanded && (
+                  <button ref={expandRef} type="button" className="about-modal-expand" onClick={expandView} aria-label="Expand Who Am I to full-screen view">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5M3 3l6 6m12-6-6 6M3 21l6-6m12 6-6-6" /></svg>
+                    Expand
+                  </button>
+                )}
+                <button ref={closeRef} type="button" className="about-modal-close" onClick={closeCurrentView} aria-label={isExpanded ? 'Return to previous modal view' : 'Close modal'}>
+                  &times;
+                </button>
+              </div>
             </div>
-            <div className="about-modal-body">
+            <div ref={bodyRef} className="about-modal-body" role="region" aria-label="About details and photo gallery" tabIndex={0}>
               <PhotoStack />
               <div className="about-modal-text">
                 <p>
