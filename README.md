@@ -1,35 +1,16 @@
-# Geaser Jan Gadingan — Portfolio
+# React + Vite
 
-Portfolio built with Next.js, React, and Tailwind CSS. Existing section styles are kept in `src/components/css` and imported centrally from `app/globals.css`; new interface pieces can use Tailwind utilities.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Run the website
+Currently, two official plugins are available:
 
-```bash
-npm install
-npm run dev
-```
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-Open <http://localhost:3000>.
+## React Compiler
 
-## Run the chat backend
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-The chat API remains a separate Express server. In another terminal:
+## Expanding the ESLint configuration
 
-```bash
-cd server
-npm install
-npm run dev
-```
-
-The frontend uses `http://localhost:5000` by default. Set `NEXT_PUBLIC_API_BASE_URL` when the backend is hosted elsewhere. Backend credentials belong in the server environment and must not use a `NEXT_PUBLIC_` prefix.
-
-## Theme modes
-
-The sidebar theme control supports System, Aqua Blue, Dark, and Light. The selection is saved in browser storage. Aqua Blue preserves the portfolio's cyan/blue look; System follows the device preference.
-
-## Production
-
-```bash
-npm run build
-npm start
-```
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.

@@ -1,13 +1,10 @@
-import ecommerceImg from '../../assets/projects/ecommerce.png';
-import taskAppImg from '../../assets/projects/taskapp.png';
-import aiGenImg from '../../assets/projects/aigen.png';
-import { assetSrc } from '../../lib/assetSrc';
+import '../../components/css/Projects.css';
 
 const ProjectCard = ({ project }) => {
   return (
     <div className="project-card reveal">
       <div className="project-image">
-        <img src={assetSrc(project.image)} alt={project.title} />
+        <img src={project.image} alt={project.title} />
         <div className="project-overlay">
           <div className="project-links">
             <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-icon-link">
@@ -38,7 +35,7 @@ const Projects = () => {
       title: 'E-Commerce Platform',
       description: 'A full-featured online store with product filtering, cart functionality, and secure checkout.',
       tech: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      image: ecommerceImg,
+      image: 'https://via.placeholder.com/600x400',
       github: '#',
       demo: '#',
     },
@@ -46,7 +43,7 @@ const Projects = () => {
       title: 'Task Management App',
       description: 'A collaborative tool for teams to manage projects, track tasks, and communicate in real-time.',
       tech: ['React', 'Firebase', 'Socket.io', 'CSS'],
-      image: taskAppImg,
+      image: 'https://via.placeholder.com/600x400',
       github: '#',
       demo: '#',
     },
@@ -54,7 +51,7 @@ const Projects = () => {
       title: 'AI Image Generator',
       description: 'An application that uses OpenAI’s DALL-E API to generate unique images based on user prompts.',
       tech: ['JavaScript', 'React', 'Tailwind', 'OpenAI'],
-      image: aiGenImg,
+      image: 'https://via.placeholder.com/600x400',
       github: '#',
       demo: '#',
     },

@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react';
 import { useTheme } from '../../context/ThemeContext';
 import darkProfile from '../../assets/Darkmodeprofile.png';
 import lightProfile from '../../assets/ligthmodeprofile.png';
+import '../../components/css/Home.css';
 
 const Home = () => {
-  const { theme, resolvedTheme } = useTheme();
-  const titles = ['AI Product Developer', 'Crypto Trader', 'BIST Graduate'];
+  const { theme } = useTheme();
+  const titles = ['Web Developer', 'Javascript Developer', 'BIST Student'];
   const [displayText, setDisplayText] = useState('');
   const [titleIndex, setTitleIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -36,7 +37,7 @@ const Home = () => {
     return () => clearTimeout(timer);
   }, [displayText, isDeleting, titleIndex, titles, typingSpeed]);
 
-  const currentImg = resolvedTheme === 'dark' ? darkProfile : lightProfile;
+  const currentImg = theme === 'dark' ? darkProfile : lightProfile;
 
   return (
     <section id="home" className="home-section">
@@ -48,7 +49,7 @@ const Home = () => {
             And I'm a <span>{displayText}</span><span className="cursor">|</span>
           </h2>
           <p className="home-subtitle reveal">
-            I build modern websites and mobile apps that automate tasks and integrate AI. I’m also interested in cryptocurrency trading. I’m passionate about technology and always eager to learn new things.
+            I build modern, high-performance web applications using React, Javascript, HTML and CSS. with all information about myself hope you will like it.
           </p>
 
           <div className="social-links reveal">
@@ -108,26 +109,18 @@ const Home = () => {
           </div>
 
           <div className="home-btns reveal">
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="download-btn"
-              aria-label="Open resume PDF in a new tab"
-            >
-              RESUME
-            </a>
+            <a href="#" className="download-btn">Download CV</a>
           </div>
         </div>
         <div className="home-image reveal">
           <div className="image-wrapper">
             <img
               key={theme}
-              src={currentImg.src}
+              src={currentImg}
               alt="Gea Profile"
               className="profile-img"
             />
-            <div className={`image-bg ${resolvedTheme === 'dark' ? 'dark-glow' : ''}`}></div>
+            <div className={`image-bg ${theme === 'dark' ? 'dark-glow' : ''}`}></div>
           </div>
         </div>
       </div>

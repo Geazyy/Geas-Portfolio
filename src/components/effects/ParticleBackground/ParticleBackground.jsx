@@ -1,78 +1,51 @@
-import { useEffect, useState } from 'react';
-import Script from 'next/script';
+import { useEffect } from 'react';
 import { useTheme } from '../../../context/ThemeContext';
-import { useEffects } from '../../../context/EffectsContext';
+import './ParticleBackground.css';
 import particlesConfig from '../../../assets/particles.json';
 
 const ParticleBackground = () => {
-  const { theme, resolvedTheme } = useTheme();
-  const { particlesEnabled, isReady } = useEffects();
-  const [libraryReady, setLibraryReady] = useState(false);
+  const { theme } = useTheme();
 
   useEffect(() => {
-    if (!particlesEnabled || !libraryReady || !window.particlesJS) return;
-    const isDark = resolvedTheme === 'dark';
-    const accentColor = theme === 'aqua-blue'
-      ? '#00e5ff'
-      : isDark
-        ? '#a3a3a3'
-        : '#525252';
+    const isDark = theme === 'dark';
+    const accentColor = isDark ? '#00e5ff' : '#334155';
 
-    const config = structuredClone(particlesConfig);
-    config.particles.color.value = accentColor;
-    config.particles.number.value = 70;
-    config.particles.opacity.value = isDark ? 0.4 : 0.25;
-    config.particles.line_linked.color = accentColor;
-    config.particles.line_linked.opacity = isDark ? 0.18 : 0.12;
-    // Decorative only: clicks never add particles or capture content input.
-    config.interactivity.events.onhover.enable = false;
-    config.interactivity.events.onclick.enable = false;
-    config.interactivity.events.resize = false;
-
-    window.particlesJS('particles-js', config);
-    const instance = window.pJSDom[window.pJSDom.length - 1];
-    const particles = instance.pJS;
-    const resize = () => {
-      const ratio = particles.tmp.retina ? particles.canvas.pxratio : 1;
-      particles.canvas.w = particles.canvas.el.offsetWidth * ratio;
-      particles.canvas.h = particles.canvas.el.offsetHeight * ratio;
-      particles.fn.canvasSize();
-      particles.fn.vendors.densityAutoParticles();
-    };
-    let paused = false;
-    const handleVisibility = () => {
-      if (document.hidden) {
-        window.cancelAnimationFrame(particles.fn.drawAnimFrame);
-        paused = true;
-      } else if (paused) {
-        paused = false;
-        particles.fn.vendors.draw();
+    // Deep copy and update config for the current theme
+    const updatedConfig = {
+      ...particlesConfig,
+      particles: {
+        ...particlesConfig.particles,
+        color: { value: accentColor },
+        line_linked: {
+          ...particlesConfig.particles.line_linked,
+          color: accentColor,
+          opacity: isDark ? 0.3 : 0.2
+        }
       }
     };
-    window.addEventListener('resize', resize, { passive: true });
-    document.addEventListener('visibilitychange', handleVisibility);
-    handleVisibility();
+
+    const initParticles = () => {
+      if (window.particlesJS) {
+        window.particlesJS('particles-js', updatedConfig);
+      } else {
+        setTimeout(() => {
+          if (window.particlesJS) {
+            window.particlesJS('particles-js', updatedConfig);
+          }
+        }, 500);
+      }
+    };
+
+    initParticles();
 
     return () => {
-      window.removeEventListener('resize', resize);
-      document.removeEventListener('visibilitychange', handleVisibility);
-      window.cancelAnimationFrame(particles.fn.drawAnimFrame);
-      window.cancelAnimationFrame(particles.tmp.checkAnimFrame);
-      particles.canvas.el.remove();
-      particles.fn.particlesEmpty();
-      // The library's destroy method nulls its global registry; remove only our instance.
-      window.pJSDom = window.pJSDom.filter((item) => item !== instance);
+      const canvas = document.querySelector('#particles-js canvas');
+      if (canvas) canvas.remove();
     };
-  }, [libraryReady, particlesEnabled, resolvedTheme, theme]);
+  }, [theme]);
 
-  if (!isReady || !particlesEnabled) return null;
-
-  return (
-    <>
-      <Script src="/vendor/particles.js" strategy="afterInteractive" onReady={() => setLibraryReady(true)} />
-      <div id="particles-js" className="particles-container" aria-hidden="true" />
-    </>
-  );
+  // Use the interaction-ready container
+  return <div id="particles-js" className="particles-container"></div>;
 };
 
 export default ParticleBackground;

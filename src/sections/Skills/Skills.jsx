@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { assetSrc } from '../../lib/assetSrc';
+import '../../components/css/Skills.css';
 
 // Frontend Logos
 import htmlImg from '../../assets/techskills/HTML5.png';
@@ -92,7 +92,7 @@ const SkillCard = ({ skill, type }) => {
       {type === 'tech' ? (
         <div className="tech-card-inner">
           <div className="skill-icon-wrapper">
-            <img src={assetSrc(skill.icon)} alt={skill.name} className={`skill-icon-img ${['Next.js', 'Express', 'GitHub'].includes(skill.name) ? 'skill-icon-monochrome' : ''}`} />
+            <img src={skill.icon} alt={skill.name} className="skill-icon-img" />
           </div>
           <div className="skill-info">
             <span className="skill-name">{skill.name}</span>

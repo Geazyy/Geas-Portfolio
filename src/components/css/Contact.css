@@ -60,7 +60,7 @@
 .contact-form textarea:focus {
     border-color: var(--accent-primary);
     outline: none;
-    box-shadow: 0 0 15px color-mix(in srgb, var(--accent-primary) 20%, transparent);
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
 }
 
 .contact-form input.error,
@@ -87,7 +87,7 @@
     font-size: 1.1rem;
     cursor: pointer;
     background-color: var(--accent-primary);
-    color: var(--accent-contrast);
+    color: #000;
     border: none;
     transition: all 0.3s ease;
     box-shadow: 0 0 15px var(--accent-primary);
@@ -104,7 +104,7 @@
     background-color: var(--bg-secondary);
     border-radius: 12px;
     border: 1px solid var(--accent-primary);
-    box-shadow: 0 0 20px color-mix(in srgb, var(--accent-primary) 10%, transparent);
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.1);
 }
 
 .success-message h3 {

@@ -61,7 +61,7 @@
 
 .project-icon-link {
     background-color: var(--accent-primary);
-    color: var(--accent-contrast);
+    color: white;
     padding: 0.6rem 1.2rem;
     border-radius: 8px;
     font-weight: 600;

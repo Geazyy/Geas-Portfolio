@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { assetSrc } from '../../lib/assetSrc';
+import '../../components/css/Certificates.css';
 import cert1 from '../../assets/certificate/certificate1.png';
 import cert2 from '../../assets/certificate/certificate2.png';
 import cert3 from '../../assets/certificate/certificate3.png';
@@ -165,7 +165,7 @@ const Certificates = () => {
                 onClick={() => setSelectedCert(cert)}
               >
                 <div className="certificate-image">
-                  <img src={assetSrc(cert.image)} alt={cert.title} />
+                  <img src={cert.image} alt={cert.title} />
                   <div className="hover-overlay">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
@@ -210,7 +210,7 @@ const Certificates = () => {
             
             <div className="cert-modal-body">
               <div className="cert-modal-image-col">
-                <img src={assetSrc(selectedCert.image)} alt={selectedCert.title} />
+                <img src={selectedCert.image} alt={selectedCert.title} />
               </div>
               <div className="cert-modal-info-col">
                 <h2 className="cert-modal-heading">{selectedCert.title}</h2>

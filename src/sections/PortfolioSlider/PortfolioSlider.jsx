@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import '../../components/css/PortfolioSlider.css';
 
 // Import Technical Logos
 import pythonImg from '../../assets/techskills/Python.png';

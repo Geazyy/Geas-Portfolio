@@ -15,7 +15,7 @@
 .dashboard-header h1 {
   font-size: 2.5rem;
   color: var(--accent-primary);
-  text-shadow: 0 0 10px color-mix(in srgb, var(--accent-primary) 30%, transparent);
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
 }
 
 .dashboard-stats {
@@ -25,7 +25,7 @@
 
 .stat-card {
   background: rgba(var(--bg-secondary-rgb), 0.5);
-  border: 1px solid color-mix(in srgb, var(--accent-primary) 20%, transparent);
+  border: 1px solid rgba(0, 229, 255, 0.2);
   padding: 1rem 2rem;
   border-radius: 15px;
   text-align: center;
@@ -63,7 +63,7 @@
 /* Left Panel */
 .chat-list-panel {
   background: rgba(var(--bg-secondary-rgb), 0.5);
-  border: 1px solid color-mix(in srgb, var(--accent-primary) 10%, transparent);
+  border: 1px solid rgba(0, 229, 255, 0.1);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -73,7 +73,7 @@
 .chat-list-panel h2 {
   padding: 1.5rem;
   font-size: 1.2rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--text-primary) 5%, transparent);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   color: var(--accent-primary);
 }
 
@@ -92,17 +92,17 @@
 
 .chat-list-item {
   padding: 1.2rem 1.5rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--text-primary) 5%, transparent);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   cursor: pointer;
   transition: background 0.2s;
 }
 
 .chat-list-item:hover {
-  background: color-mix(in srgb, var(--accent-primary) 5%, transparent);
+  background: rgba(0, 229, 255, 0.05);
 }
 
 .chat-list-item.active {
-  background: color-mix(in srgb, var(--accent-primary) 10%, transparent);
+  background: rgba(0, 229, 255, 0.1);
   border-left: 4px solid var(--accent-primary);
 }
 
@@ -140,7 +140,7 @@
 /* Right Panel */
 .chat-thread-panel {
   background: rgba(var(--bg-secondary-rgb), 0.5);
-  border: 1px solid color-mix(in srgb, var(--accent-primary) 10%, transparent);
+  border: 1px solid rgba(0, 229, 255, 0.1);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -149,8 +149,8 @@
 
 .thread-header {
   padding: 1.5rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--text-primary) 5%, transparent);
-  background: color-mix(in srgb, var(--accent-primary) 5%, transparent);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(0, 229, 255, 0.05);
 }
 
 .thread-header h2 {
@@ -217,9 +217,9 @@
 }
 
 .thread-message.model .msg-bubble {
-  background: color-mix(in srgb, var(--accent-primary) 10%, transparent);
+  background: rgba(0, 229, 255, 0.1);
   color: var(--text-primary);
-  border: 1px solid color-mix(in srgb, var(--accent-primary) 20%, transparent);
+  border: 1px solid rgba(0, 229, 255, 0.2);
   border-bottom-left-radius: 2px;
 }
 
@@ -249,7 +249,7 @@
 
 .chat-list-header {
   padding: 1.5rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--text-primary) 5%, transparent);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .chat-list-header h2 {
@@ -262,7 +262,7 @@
   width: 100%;
   padding: 8px 12px;
   background: rgba(0, 0, 0, 0.2);
-  border: 1px solid color-mix(in srgb, var(--accent-primary) 20%, transparent);
+  border: 1px solid rgba(0, 229, 255, 0.2);
   border-radius: 6px;
   color: var(--text-primary);
   outline: none;
@@ -273,7 +273,7 @@
 }
 
 .chat-list-item.unread {
-  background: color-mix(in srgb, var(--accent-primary) 8%, transparent);
+  background: rgba(0, 229, 255, 0.08);
 }
 
 .unread-dot {
@@ -306,8 +306,8 @@
 
 .reply-container {
   padding: 1.5rem;
-  border-top: 1px solid color-mix(in srgb, var(--text-primary) 5%, transparent);
-  background: color-mix(in srgb, var(--accent-primary) 2%, transparent);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(0, 229, 255, 0.02);
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -316,7 +316,7 @@
 .reply-container textarea {
   width: 100%;
   background: rgba(0, 0, 0, 0.2);
-  border: 1px solid color-mix(in srgb, var(--accent-primary) 20%, transparent);
+  border: 1px solid rgba(0, 229, 255, 0.2);
   border-radius: 8px;
   color: var(--text-primary);
   padding: 10px;
