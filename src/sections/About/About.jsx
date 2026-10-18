@@ -77,21 +77,20 @@ const About = () => {
     <section id="about" className="section color-bg">
       <div className="container">
         <div className="about-wrapper">
-          {/* Main Side View */}
           <div className="about-profile reveal">
-            <div className="hexagon-container">
-              <div className="hexagon">
-                <img src={assetSrc(profileImg)} alt="Profile" />
+            <div className="about-portrait-frame">
+              <div className="about-portrait">
+                <img src={assetSrc(profileImg)} alt="Geaser Jan" />
               </div>
-              <div className="hexagon-glow"></div>
             </div>
           </div>
 
           <div className="about-brief reveal">
             <h2 className="about-title">About <span>Me</span></h2>
-            <h3 className="about-role">BS Information Technology Student</h3>
+            <h3 className="about-name">Geaser Jan</h3>
+            <p className="about-role">Software Developer</p>
             <p className="about-intro">
-              As an aspiring full-stack developer with a focus on modern web stacks (MERN/PERN), I have built several projects that solve real-world problems. Recently, I've been exploring the world of AI integration and scalable web development.
+              I'm currently an AI Product Developer, building web applications and AI-powered tools that automate tasks and solve real-world problems. I combine modern web development with AI integration to create practical, easy-to-use experiences.
             </p>
             <button ref={readMoreRef} className="primary-btn read-more-btn" onClick={toggleAboutModal} aria-haspopup="dialog">
               Read more
@@ -135,7 +134,7 @@ const About = () => {
               <PhotoStack />
               <div className="about-modal-text">
                 <p>
-                  I'm a passionate developer currently pursuing my degree in BS Information Technology. I love building web applications that solve real-world problems and provide great user experiences.
+                  I'm Geaser Jan, a software developer currently working as an AI Product Developer. I love building web applications and AI-powered tools that solve real-world problems and provide great user experiences.
                 </p>
                 <p>
                   My journey in tech started with a curiosity about how websites work, which led me to pursue mastering modern frameworks. I'm always eager to learn new technologies and improve my skills, especially in integrating AI into development.

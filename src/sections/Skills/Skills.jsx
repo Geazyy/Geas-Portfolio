@@ -146,10 +146,9 @@ const Skills = () => {
         
         <div className="skills-sliders-container">
           {/* Technical Skills Slider */}
-          <div className="skills-slider-box">
-             <h3 className="slider-header">Technical <span>Skills</span> (Frontend • Backend • Tools)</h3>
-             <div className="slider-viewport">
-                 <button className="slider-arrow prev" onClick={handlePrevTech} aria-label="Previous">
+          <div className="technical-skills-slider" role="group" aria-label="Technical skills">
+             <div className="skills-viewport">
+                 <button className="skills-arrow prev" onClick={handlePrevTech} aria-label="Previous">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                        <polyline points="15 18 9 12 15 6"></polyline>
                     </svg>
@@ -167,7 +166,7 @@ const Skills = () => {
                        ))}
                     </div>
                  </div>
-                 <button className="slider-arrow next" onClick={handleNextTech} aria-label="Next">
+                 <button className="skills-arrow next" onClick={handleNextTech} aria-label="Next">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                        <polyline points="9 18 15 12 9 6"></polyline>
                     </svg>
@@ -178,8 +177,8 @@ const Skills = () => {
           {/* Soft Skills Slider */}
           <div className="skills-slider-box">
              <h3 className="slider-header">Professional <span>Skills</span></h3>
-             <div className="slider-viewport">
-                 <button className="slider-arrow prev" onClick={handlePrevSoft} aria-label="Previous">
+             <div className="skills-viewport">
+                 <button className="skills-arrow prev" onClick={handlePrevSoft} aria-label="Previous">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                        <polyline points="15 18 9 12 15 6"></polyline>
                     </svg>
@@ -197,7 +196,7 @@ const Skills = () => {
                        ))}
                     </div>
                  </div>
-                 <button className="slider-arrow next" onClick={handleNextSoft} aria-label="Next">
+                 <button className="skills-arrow next" onClick={handleNextSoft} aria-label="Next">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                        <polyline points="9 18 15 12 9 6"></polyline>
                     </svg>

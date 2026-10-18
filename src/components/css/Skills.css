@@ -7,6 +7,11 @@
 }
 
 /* Main Box Container */
+.technical-skills-slider {
+    width: 100%;
+    min-width: 0;
+}
+
 .skills-slider-box {
     background: var(--glass-bg);
     border: 1px solid var(--border-color);
@@ -46,10 +51,16 @@
 }
 
 /* Slider Viewport & Track */
-.slider-viewport {
+.skills-viewport {
     position: relative;
     width: 100%;
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
+    align-items: center;
+    gap: 12px;
 }
+
+.skills-viewport > .slider-track-container { min-width: 0; }
 
 .slider-track {
     display: flex;
@@ -233,15 +244,15 @@
 }
 
 /* Arrows */
-.slider-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+.skills-arrow {
+    position: relative;
+    align-self: center;
+    padding: 0;
     background: var(--bg-secondary);
     border: 1px solid color-mix(in srgb, var(--text-primary) 5%, transparent);
     color: var(--accent-primary);
-    width: 45px;
-    height: 45px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -253,25 +264,22 @@
     backdrop-filter: blur(4px);
 }
 
-.slider-arrow svg {
+.skills-arrow svg {
     width: 24px;
     height: 24px;
 }
 
-.slider-arrow:hover {
+.skills-arrow:hover {
     background: var(--accent-primary);
     color: var(--accent-contrast);
-    transform: translateY(-50%) scale(1.1);
+    transform: scale(1.05);
     opacity: 1;
     box-shadow: 0 0 20px color-mix(in srgb, var(--accent-primary) 40%, transparent);
 }
 
-.slider-arrow.prev { left: -1.5rem; }
-.slider-arrow.next { right: -1.5rem; }
-
-@media (max-width: 1300px) {
-    .slider-arrow.prev { left: 0.5rem; }
-    .slider-arrow.next { right: 0.5rem; }
+.skills-arrow:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 3px;
 }
 
 /* Responsive */
@@ -285,6 +293,10 @@
 }
 
 @media (max-width: 768px) {
+    .skills-viewport { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .skills-viewport > .slider-track-container { grid-column: 1 / -1; grid-row: 1; }
+    .skills-arrow.prev { grid-column: 1; grid-row: 2; justify-self: end; }
+    .skills-arrow.next { grid-column: 2; grid-row: 2; justify-self: start; }
     .skills-slider-box {
         padding: 1.5rem;
     }
@@ -296,7 +308,7 @@
         grid-template-columns: repeat(2, 1fr);
         padding: 0 0.5rem;
     }
-    .slider-arrow {
+    .skills-arrow {
         font-size: 2rem;
     }
     .tech-card-inner {
