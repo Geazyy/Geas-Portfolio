@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
-import profileImg from '../../assets/profile.jpg';
-import { assetSrc } from '../../lib/assetSrc';
 import PhotoStack from '../../components/PhotoStack';
+import Experience from '../Experience/Experience';
+import AboutPhone from './AboutPhone';
 
 const About = () => {
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
@@ -78,11 +78,7 @@ const About = () => {
       <div className="container">
         <div className="about-wrapper">
           <div className="about-profile reveal">
-            <div className="about-portrait-frame">
-              <div className="about-portrait">
-                <img src={assetSrc(profileImg)} alt="Geaser Jan" />
-              </div>
-            </div>
+            <AboutPhone />
           </div>
 
           <div className="about-brief reveal">
@@ -130,7 +126,7 @@ const About = () => {
                 </button>
               </div>
             </div>
-            <div ref={bodyRef} className="about-modal-body" role="region" aria-label="About details and photo gallery" tabIndex={0}>
+            <div ref={bodyRef} className="about-modal-body" role="region" aria-label="About details, photo gallery, and experience" tabIndex={0}>
               <PhotoStack />
               <div className="about-modal-text">
                 <p>
@@ -140,6 +136,10 @@ const About = () => {
                   My journey in tech started with a curiosity about how websites work, which led me to pursue mastering modern frameworks. I'm always eager to learn new technologies and improve my skills, especially in integrating AI into development.
                 </p>  
               </div>
+              <section className="about-modal-experience" aria-labelledby="about-experience-title">
+                <h3 id="about-experience-title">My <span>Experience</span></h3>
+                <Experience />
+              </section>
             </div>
           </div>
         </div>

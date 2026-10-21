@@ -33,9 +33,8 @@ const Navbar = ({ isSidebarHidden, onToggleSidebar }) => {
 
   const navLinks = [
     { name: 'About', href: '#about' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
+    { name: 'Skills', href: '#skills' },
     { name: 'Certificates', href: '#certificates' },
     { name: 'Contact', href: '#contact' },
   ];

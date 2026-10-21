@@ -54,38 +54,33 @@ const experience = [
 ];
 
 const Experience = () => (
-  <section id="experience" className="section color-bg-alt experience-section">
-    <div className="container">
-      <h2 className="section-title reveal">My <span>Experience</span></h2>
-      <div className="experience-list">
-        {experience.map((item) => (
-          <article className="experience-card reveal" key={`${item.organization}-${item.role}`}>
-            <div className="experience-card-header">
-              <div>
-                <p className="experience-organization">{item.organization}</p>
-                <h3 className="experience-role">
-                  {item.role}
-                  {item.type && <span className="experience-type"> · {item.type}</span>}
-                </h3>
-                {item.technologies.length > 0 && (
-                  <ul className="experience-tech" aria-label="Technologies used">
-                    {item.technologies.map((technology) => <li key={technology}>{technology}</li>)}
-                  </ul>
-                )}
-              </div>
-              <div className="experience-meta">
-                {item.location && <span>{item.location}</span>}
-                <time>{item.dates}</time>
-              </div>
-            </div>
-            <ul className="experience-highlights">
-              {item.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
-            </ul>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
+  <div className="experience-list">
+    {experience.map((item) => (
+      <article className="experience-card" key={`${item.organization}-${item.role}`}>
+        <div className="experience-card-header">
+          <div>
+            <p className="experience-organization">{item.organization}</p>
+            <h4 className="experience-role">
+              {item.role}
+              {item.type && <span className="experience-type"> · {item.type}</span>}
+            </h4>
+            {item.technologies.length > 0 && (
+              <ul className="experience-tech" aria-label="Technologies used">
+                {item.technologies.map((technology) => <li key={technology}>{technology}</li>)}
+              </ul>
+            )}
+          </div>
+          <div className="experience-meta">
+            {item.location && <span>{item.location}</span>}
+            <time>{item.dates}</time>
+          </div>
+        </div>
+        <ul className="experience-highlights">
+          {item.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
+        </ul>
+      </article>
+    ))}
+  </div>
 );
 
 export default Experience;

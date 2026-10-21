@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Navbar from './layouts/Navbar/Navbar';
 import Home from './sections/Home/Home';
 import About from './sections/About/About';
-import Experience from './sections/Experience/Experience';
 import Skills from './sections/Skills/Skills';
 import Projects from './sections/Projects/Projects';
 import Contact from './sections/Contact/Contact';
@@ -13,10 +12,12 @@ import Footer from './layouts/Footer/Footer';
 import ParticleBackground from './components/effects/ParticleBackground/ParticleBackground';
 import ChatBot from './components/ChatBot';
 import useScrollReveal from './hooks/useScrollReveal';
+import useGentleScroll from './hooks/useGentleScroll';
 
 const PortfolioLayout = () => {
   const [isSidebarHidden, setIsSidebarHidden] = useState(false);
   useScrollReveal();
+  useGentleScroll();
 
   return (
     <>
@@ -29,9 +30,8 @@ const PortfolioLayout = () => {
         <main>
           <Home />
           <About />
-          <Experience />
-          <Skills />
           <Projects />
+          <Skills />
           <Certificates />
           <Contact />
         </main>

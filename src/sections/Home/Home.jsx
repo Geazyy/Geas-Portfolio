@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useTheme } from '../../context/ThemeContext';
-import darkProfile from '../../assets/Darkmodeprofile.png';
-import lightProfile from '../../assets/ligthmodeprofile.png';
+import HeroLaptop from './HeroLaptop';
 
 const Home = () => {
-  const { theme, resolvedTheme } = useTheme();
   const titles = ['AI Product Developer', 'Crypto Trader', 'BIST Graduate'];
   const [displayText, setDisplayText] = useState('');
   const [titleIndex, setTitleIndex] = useState(0);
@@ -35,8 +32,6 @@ const Home = () => {
     const timer = setTimeout(handleTyping, typingSpeed);
     return () => clearTimeout(timer);
   }, [displayText, isDeleting, titleIndex, titles, typingSpeed]);
-
-  const currentImg = resolvedTheme === 'dark' ? darkProfile : lightProfile;
 
   return (
     <section id="home" className="home-section">
@@ -109,7 +104,7 @@ const Home = () => {
 
           <div className="home-btns reveal">
             <a
-              href="/resume.pdf"
+              href="/Resumedevtest_G.gadingan.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="download-btn"
@@ -120,15 +115,7 @@ const Home = () => {
           </div>
         </div>
         <div className="home-image reveal">
-          <div className="image-wrapper">
-            <img
-              key={theme}
-              src={currentImg.src}
-              alt="Gea Profile"
-              className="profile-img"
-            />
-            <div className={`image-bg ${resolvedTheme === 'dark' ? 'dark-glow' : ''}`}></div>
-          </div>
+          <HeroLaptop />
         </div>
       </div>
     </section>

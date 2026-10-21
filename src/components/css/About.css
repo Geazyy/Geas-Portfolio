@@ -1,12 +1,16 @@
+#about {
+    padding-top: 64px;
+}
+
 .about-wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 5rem;
-    padding: 4rem 0;
+    padding: 3rem 0 4rem;
 }
 
-/* Portrait with a subtle offset frame, using the active theme's accent. */
+/* The square stage reserves space while the Three.js phone folds open. */
 .about-profile {
     flex: 1 1 320px;
     min-width: 0;
@@ -15,47 +19,86 @@
     align-items: center;
 }
 
-.about-portrait-frame {
+.about-phone-stage {
     position: relative;
-    width: min(100%, 320px);
-    margin: 0 14px 14px 0;
+    width: min(100%, 510px);
+    aspect-ratio: 1 / 1;
     isolation: isolate;
 }
 
-.about-portrait-frame::before {
+.about-phone-stage.is-interactive {
+    cursor: grab;
+    touch-action: pan-y;
+    user-select: none;
+}
+
+.about-phone-stage.is-dragging { cursor: grabbing; }
+
+.about-phone-stage:focus-visible {
+    outline: 2px solid #00d9ef;
+    outline-offset: 4px;
+    border-radius: 8px;
+}
+
+.about-phone-reset {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    bottom: -8px;
+    transform: translateX(-50%);
+    min-height: 44px;
+    padding: 8px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    font: inherit;
+    font-size: 0.75rem;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.about-phone-reset:hover {
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
+.about-phone-reset:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 4px;
+}
+
+.about-phone-stage::after {
     content: '';
     position: absolute;
-    inset: 16px -14px -14px 16px;
-    border: 1px solid color-mix(in srgb, var(--accent-primary) 55%, transparent);
-    border-radius: 24px 80px 24px 24px;
-    background: color-mix(in srgb, var(--accent-primary) 4%, transparent);
+    left: 12%;
+    right: 12%;
+    bottom: 8%;
+    height: 10%;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.45);
+    filter: blur(17px);
     z-index: -1;
+    pointer-events: none;
 }
 
-.about-portrait {
-    width: 100%;
-    aspect-ratio: 4 / 5;
-    border-radius: 24px 80px 24px 24px;
-    border: 1px solid var(--border-color);
-    background: var(--bg-secondary);
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.2);
-}
-
-.about-portrait img {
+.about-phone-canvas {
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center 35%;
-    transition: transform 0.5s ease;
 }
 
-@media (hover: hover) and (prefers-reduced-motion: no-preference) {
-    .about-portrait:hover img { transform: scale(1.025); }
+.about-phone-unavailable {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    color: var(--text-secondary);
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .about-profile.reveal.active { transition: none; }
+}
 /* Brief Content Styling */
 .about-brief {
     flex: 1.5;
@@ -273,6 +316,23 @@
     margin-bottom: 1.5rem;
 }
 
+.about-modal-experience {
+    max-width: 1000px;
+    margin: 2rem auto 0;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.about-modal-experience h3 {
+    margin-bottom: 1.5rem;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--text-primary);
+}
+
+.about-modal-experience h3 span { color: var(--accent-primary); }
+
+.about-modal-experience .experience-card { padding: 1.5rem; }
+
 /* Responsive Scaling */
 @media (max-width: 1024px) {
     .about-wrapper {
@@ -285,10 +345,12 @@
 }
 
 @media (max-width: 900px) {
+    #about { padding-top: 56px; }
     .about-wrapper {
         flex-direction: column;
         text-align: center;
         gap: 4rem;
+        padding-top: 2.5rem;
     }
 
     .about-profile { flex: none; width: 100%; }
@@ -321,9 +383,7 @@
 }
 
 @media (max-width: 480px) {
-    .about-portrait-frame {
-        width: min(100%, 260px);
-    }
+    .about-phone-stage { width: min(100%, 400px); }
     .about-title {
         font-size: 2.5rem;
     }

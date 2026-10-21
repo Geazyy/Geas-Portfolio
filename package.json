@@ -10,10 +10,12 @@
     "start": "next start"
   },
   "dependencies": {
+    "@react-three/fiber": "^9.8.2",
     "next": "^16.4.1",
     "particles.js": "^2.0.0",
     "react": "^19.2.4",
-    "react-dom": "^19.2.4"
+    "react-dom": "^19.2.4",
+    "three": "^0.186.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
